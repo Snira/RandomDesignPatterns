@@ -161,6 +161,11 @@ class Caretaker
             echo $memento->getName() . "\n";
         }
     }
+
+    public function getOldest(): Memento
+    {
+        return $this->mementos[0];
+    }
 }
 
 
@@ -198,7 +203,7 @@ $caretaker->backup();
 $originator->handle();
 
 print 'en nu terug naar de eerste' . PHP_EOL;
-$memento = new ConcreteMemento('Dit is het begin');
+$memento = $caretaker->getOldest();
 $originator->restore($memento);
 $originator->handle();
 $caretaker->backup();
