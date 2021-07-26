@@ -15,7 +15,7 @@ interface HandlerInterface
 
     /**
      * in een Laravel Middleware wordt in de handle de $request,
-     * een Closure $next en $request als param meegegeven,
+     * een Closure $next en $attributes als param meegegeven,
      * in dit voorbeeld doen we een array met wat request settings
      */
     public function handle($request = null);
