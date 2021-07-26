@@ -98,6 +98,10 @@ class ConcreteMemento implements Memento
         return $this->state;
     }
 
+    /**
+     * Met de in het Memento opgeslagen velden van de Originator kan je dan weer dingen doen.
+     * In dit geval maken we een labeltje op basis van de datum en de state
+     */
     public function getName(): string
     {
         return $this->date . ' / (' . substr($this->state, 0, 9) . '...)';
