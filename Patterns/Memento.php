@@ -140,7 +140,7 @@ class Caretaker
     }
 
     /**
-     * Draai terug naar de vorige state
+     * Verwijder laatst aangemaakt state
      */
     public function undo(): void
     {
