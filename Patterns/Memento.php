@@ -12,7 +12,7 @@ class Originator
 {
     /**
      * De "states" waarin wij in dit voorbeeld werken zijn voor het gemak gewoon wat random strings.
-     * Maar beeld je in dat dit normaal ingezet wordt op objecten met veel variabele velden
+     * Maar beeld je in dat dit normaal ingezet wordt op objecten met veel variabele velden.
      */
     private string $state;
 
@@ -76,7 +76,8 @@ interface Memento
 }
 
 /**
- * Invulling van een Memento.
+ * De Memento is een object dat de state van de originator bewaard.
+ * Hierbij kan je dus ook bijvoorbeeld een tijd toevoegen wanneer die is gemaakt voor extra ordening
  */
 class ConcreteMemento implements Memento
 {
