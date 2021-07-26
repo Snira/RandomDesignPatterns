@@ -79,13 +79,13 @@ class MustBeLoggedInHandler extends AbstractHandler
     }
 }
 
-class MustBeAdminUserHandler extends AbstractHandler
+class MustBeBoyHandler extends AbstractHandler
 {
     public function handle($attributes = null)
     {
-        print __METHOD__ . 'Check if user is admin ...' . PHP_EOL;
+        print __METHOD__ . 'Check if user is Boy ...' . PHP_EOL;
         if (!$attributes['is_admin']) {
-            throw new Exception("Must be admin user");
+            throw new Exception("Must be Boy");
         }
 
         return $this->next($attributes);
@@ -97,14 +97,14 @@ $attributes = [
     'ip' => '127.0.0.1',
     'requested_uri' => '/home',
     'user_id' => 123,
-    'is_admin' => true,
+    'is_boy' => false,
 ];
 
 $mustBeLoggedIn = new MustBeLoggedInHandler();
 $ipCheck = new IPCheckHandler();
-$adminCheck = new MustBeAdminUserHandler();
+$boyCheck = new MustBeBoyHandler();
 
 $mustBeLoggedIn->setNext($ipCheck);
-$ipCheck->setNext($adminCheck);
+$ipCheck->setNext($boyCheck);
 
 $mustBeLoggedIn->handle($attributes);
