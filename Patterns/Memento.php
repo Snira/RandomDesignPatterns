@@ -21,7 +21,7 @@ class Originator
      */
     public function handle(): void
     {
-        print  'Originator: uitvoeren van: ' . __METHOD__ . ' met state ' . $this->state . PHP_EOL;
+        print  'Originator: uitvoeren van: ' . __METHOD__ . ' met state "' . $this->state . '"' . PHP_EOL;
 
         $this->state = $this->generateRandomString(30);
 
@@ -51,7 +51,7 @@ class Originator
     }
 
     /**
-     * Restore de state van de Originator uit de Memento.
+     * Restore een specifieke state van de Originator uit de Memento.
      */
     public function restore(Memento $memento): void
     {
@@ -69,8 +69,7 @@ interface Memento
 }
 
 /**
- * The Concrete Memento contains the infrastructure for storing the Originator's
- * state.
+ * Invulling van een Memento.
  */
 class ConcreteMemento implements Memento
 {
@@ -93,7 +92,7 @@ class ConcreteMemento implements Memento
 
     public function getName(): string
     {
-        return $this->date . " / (" . substr($this->state, 0, 9) . "...)";
+        return $this->date . ' / (' . substr($this->state, 0, 9) . '...)';
     }
 
     public function getDate(): string
@@ -144,7 +143,7 @@ class Caretaker
 
     public function showHistory(): void
     {
-        print  'Caretaker: dit zijn alle huidige mementos ... ' . PHP_EOL;
+        print  'Caretaker: dit zijn alle huidige mementos: ' . PHP_EOL;
 
         foreach ($this->mementos as $memento) {
             echo $memento->getName() . "\n";
@@ -153,7 +152,7 @@ class Caretaker
 }
 
 
-$originator = new Originator('Dit is de begin state');
+$originator = new Originator('Dit is het begin');
 $caretaker = new Caretaker($originator);
 
 $caretaker->backup();
@@ -173,3 +172,23 @@ $caretaker->undo();
 
 print 'poah en nog een!' . PHP_EOL;
 $caretaker->undo();
+
+print 'weer een paar erbij' . PHP_EOL;
+
+
+$caretaker->backup();
+$originator->handle();
+$caretaker->backup();
+$originator->handle();
+$caretaker->backup();
+$originator->handle();
+$caretaker->backup();
+$originator->handle();
+
+print 'en nu terug naar de eerste' . PHP_EOL;
+$memento = new ConcreteMemento('Dit is het begin');
+$originator->restore($memento);
+$originator->handle();
+$caretaker->backup();
+
+$caretaker->showHistory();
