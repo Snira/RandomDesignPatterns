@@ -71,7 +71,7 @@ class MustBeLoggedInHandler extends AbstractHandler
     public function handle($attributes = null)
     {
         print __METHOD__ . 'Checking if user logged in ...' . PHP_EOL;
-        if (empty($attributes['user_id'])) {
+        if (!$attributes['user_id']) {
             throw new Exception("Must be logged in");
         }
 
@@ -84,7 +84,7 @@ class MustBeAdminUserHandler extends AbstractHandler
     public function handle($attributes = null)
     {
         print __METHOD__ . 'Check if user is admin ...' . PHP_EOL;
-        if (empty($attributes['is_admin'])) {
+        if (!$attributes['is_admin']) {
             throw new Exception("Must be admin user");
         }
 
