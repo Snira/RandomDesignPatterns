@@ -2,10 +2,17 @@
 
 declare(strict_types=1);
 
+/**
+ * Memento patroon is er eentje die ingezet kan worden in use cases waarbij het belangrijk is
+ * dat een state van een object makkelijk terug te halen is.
+ * Hiervoor zijn 3 classes belangrijk.
+ * De Originator is de class waarvan we de state willen gaan bewaren.
+ */
 class Originator
 {
     /**
-     * De "states" waarin wij in dit voorbeeld werken zijn voor het gemak gewoon random strings
+     * De "states" waarin wij in dit voorbeeld werken zijn voor het gemak gewoon wat random strings.
+     * Maar beeld je in dat dit normaal ingezet wordt op objecten met veel variabele velden
      */
     private string $state;
 
@@ -17,7 +24,7 @@ class Originator
     }
 
     /**
-     * Handle method in dit geval wat de originator uitvoert, en wat zijn staat veranderd.
+     * Handle method in dit voorbeeld wat er met de originator gebeurt, en dat zijn state veranderd.
      */
     public function handle(): void
     {
