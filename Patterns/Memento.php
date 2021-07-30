@@ -192,7 +192,7 @@ $caretaker->undo();
 
 print 'weer een paar erbij' . PHP_EOL;
 
-
+$caretaker->showHistory();
 $caretaker->backup();
 $originator->handle();
 $caretaker->backup();

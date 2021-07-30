@@ -85,7 +85,7 @@ class MustBeBoyHandler extends AbstractHandler
     public function handle($request = null)
     {
         print __METHOD__ . 'Check if user is Boy ...' . PHP_EOL;
-        if (!$request['is_admin']) {
+        if (!$request['is_boy']) {
             throw new Exception("Must be Boy");
         }
 
@@ -98,7 +98,7 @@ $request = [
     'ip' => '127.0.0.1',
     'requested_uri' => '/home',
     'user_id' => 123,
-    'is_boy' => false,
+    'is_boy' => true,
 ];
 
 $mustBeLoggedIn = new MustBeLoggedInHandler();
