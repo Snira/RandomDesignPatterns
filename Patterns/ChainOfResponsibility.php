@@ -21,7 +21,7 @@ interface HandlerInterface
     public function handle($request = null);
 
     /**
-     * De volgende handler die uitgevoerd moet worden
+     * voer volgende handler uit
      */
     public function next($request = null);
 }
